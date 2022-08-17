@@ -16,12 +16,12 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    marginTop: 50,
   },
   header_title: {
     fontSize: 26,
     fontWeight: '800',
     lineHeight: 34,
-    color: 'white',
   },
 
   header_title_inner: {

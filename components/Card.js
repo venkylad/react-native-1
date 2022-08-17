@@ -13,7 +13,6 @@ const Card = ({ data }) => {
       <Text style={styles.card_title}>{data.title}</Text>
       <Text style={styles.card_body}>{data.body}</Text>
       <TouchableOpacity
-        style={styles.btn}
         onPress={() => navigation.navigate('Details', { data })}
       >
         <Text style={styles.btn_text}>More Info</Text>
@@ -26,7 +25,6 @@ export default Card;
 
 const styles = StyleSheet.create({
   card: {
-    minHeight: '200px',
     borderRadius: 18,
     padding: 20,
     margin: 20,
@@ -52,18 +50,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowRadius: 10,
   },
-  btn: {
-    backgroundColor: '#1c1b1b',
-    width: '80px',
-    padding: 8,
-    borderRadius: 20,
-    alignSelf: 'flex-end',
-    marginTop: 5,
-  },
   btn_text: {
+    backgroundColor: '#1c1b1b',
     color: 'white',
     fontSize: 14,
     fontWeight: '300',
     textAlign: 'center',
+    padding: 8,
+    margin: 5,
+    borderRadius: 10,
   },
 });

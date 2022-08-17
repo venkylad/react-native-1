@@ -8,10 +8,11 @@ import {
 } from 'react-native';
 import { FocusedStatusBar, Header } from '../components';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
-const Details = ({ route, navigation }) => {
+const Details = ({ route }) => {
   const { data } = route.params;
-  console.log(data);
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
@@ -23,24 +24,17 @@ const Details = ({ route, navigation }) => {
             style={[styles.card, styles.shadowProp]}
           >
             <Text style={styles.sub_title}>User ID: {data.userId}</Text>
-            <View style={styles.hr} />
+
             <Text style={styles.sub_title}>Title:</Text>
             <Text style={styles.card_title}>{data.title}</Text>
-            <View style={styles.hr} />
+
             <Text style={styles.sub_title}>Body:</Text>
             <Text style={styles.card_body}>{data.body}</Text>
-            <TouchableOpacity
-              style={styles.btn}
-              onPress={() => navigation.navigate('Home')}
-            >
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
               <Text style={styles.btn_text}>Back</Text>
             </TouchableOpacity>
           </LinearGradient>
         </View>
-      </View>
-      <View style={styles.bg}>
-        <View style={styles.inner_bg1} />
-        <View style={styles.inner_bg2} />
       </View>
     </SafeAreaView>
   );
@@ -54,30 +48,7 @@ const styles = StyleSheet.create({
     color: 'black',
     lineHeight: 26,
   },
-  bg: {
-    zIndex: -1,
-    position: 'absolute',
-    width: '100%',
-    height: '100vh',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-  inner_bg1: {
-    width: '100%',
-    height: ' 40%',
-    backgroundColor: '#07071c',
-    opacity: 0.9,
-  },
-
-  inner_bg2: {
-    width: '100%',
-    height: ' 60%',
-    backgroundColor: '#e3ffd5',
-  },
   card: {
-    minHeight: '200px',
     borderRadius: 18,
     padding: 40,
     margin: 20,
@@ -103,26 +74,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowRadius: 10,
   },
-  btn: {
-    backgroundColor: '#1c1b1b',
-    width: '75px',
-    padding: 8,
-    borderRadius: 20,
-    alignSelf: 'flex-end',
-    marginTop: 5,
-  },
+
   btn_text: {
+    backgroundColor: '#1c1b1b',
     color: 'white',
     fontSize: 14,
     fontWeight: '300',
     textAlign: 'center',
-  },
-  hr: {
-    width: '100%',
-    height: '1px',
-    border: '1px solid #1c1b1b',
-    opacity: 0.75,
-    margin: 20,
-    marginHorizontal: 0,
+    padding: 8,
+    margin: 5,
+    borderRadius: 10,
   },
 });
